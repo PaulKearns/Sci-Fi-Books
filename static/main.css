@@ -1,0 +1,233 @@
+/* Base color scheme */
+:root {
+    --base-color: #3498db;
+    --accent-color: #e74c3c;
+    --light-grey: #999999;
+    --dark-grey: #333333;
+    --base-color-light: #eaf2f8;
+    --base-color-dark: #2980b9;
+  }
+  
+  /* General styles */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--dark-grey);
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+  }
+  
+  /* Navbar customization - Making base color more prominent */
+  .navbar {
+    background-color: var(--base-color) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  
+  .navbar-brand {
+    color: white !important;
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+  
+  .nav-link {
+    color: white !important;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .nav-link:hover {
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
+  
+  .navbar .btn-outline-light:hover {
+    background-color: white;
+    color: var(--base-color);
+  }
+  
+  /* Home page styles */
+  .site-header {
+    background-color: var(--base-color-light);
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    border-radius: 0.5rem;
+    border-left: 5px solid var(--base-color);
+  }
+  
+  .book-card {
+    transition: all 0.3s ease;
+    height: 100%;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  }
+  
+  .book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border-color: var(--base-color);
+  }
+  
+  .book-cover-preview {
+    height: 250px;
+    object-fit: cover;
+    width: 100%;
+  }
+  
+  .book-info {
+    padding: 1rem;
+  }
+  
+  /* Search results page */
+  .search-result-count {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .match-indicator {
+    background-color: rgba(52, 152, 219, 0.1);
+    color: var(--base-color);
+    font-size: 0.85rem;
+    margin-right: 10px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .search-description {
+    max-height: 100px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .fade-out {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1));
+  }
+  
+  .highlight {
+    background-color: #FFFF99;
+    font-weight: bold;
+    padding: 0 2px;
+    border-radius: 2px;
+  }
+  
+  /* Book view page */
+  .book-cover {
+    max-width: 300px;
+    max-height: 450px;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    border-radius: 6px;
+    border: 3px solid white;
+  }
+  
+  /* Form styles for add and edit pages */
+  .form-header {
+    border-bottom: 3px solid var(--base-color);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+  }
+  
+  .form-section {
+    background-color: var(--base-color-light);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+    border-left: 4px solid var(--base-color);
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .required-indicator {
+    color: var(--accent-color);
+    margin-left: 3px;
+    font-weight: bold;
+  }
+  
+  .error-feedback {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    padding-left: 5px;
+    border-left: 2px solid #dc3545;
+  }
+  
+  /* Success message and notification */
+  .success-message {
+    display: none;
+    background-color: rgba(231, 76, 60, 0.1);
+    border-color: rgba(231, 76, 60, 0.3);
+    color: var(--accent-color);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.25rem;
+    border-left: 4px solid var(--accent-color);
+  }
+  
+  /* Color classes according to spec */
+  .accent-color {
+    color: var(--accent-color);
+  }
+  
+  .base-color {
+    color: var(--base-color);
+  }
+  
+  .dark-grey {
+    color: var(--dark-grey);
+  }
+  
+  .light-grey {
+    color: var(--light-grey);
+  }
+
+  .btn-accent {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: white;
+  }
+  
+  .btn-accent:hover {
+    background-color: #d44235; /* slightly darker shade of the accent color */
+    border-color: #d44235;
+    color: white;
+  }
+  
+  /* Button customization */
+  .btn-primary {
+    background-color: var(--base-color);
+    border-color: var(--base-color);
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--base-color-dark);
+    border-color: var(--base-color-dark);
+  }
+  
+  /* Tables for search results */
+  .table-hover tbody tr:hover {
+    background-color: var(--base-color-light);
+  }
+  
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .book-cover-preview {
+      height: 200px;
+    }
+    
+    .form-section {
+      padding: 1rem;
+    }
+  }

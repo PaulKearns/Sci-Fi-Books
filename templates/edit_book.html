@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Book - {{ book.title }} - Funny Sci-Fi Books</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <div class="container mt-4">
+        <!-- Form header - conceptual group for purpose -->
+        <div class="form-header">
+            <h1 class="base-color">Edit Book: {{ book.title }}</h1>
+            <p class="light-grey">Update information for this book. All fields marked with <span class="required-indicator">*</span> are required.</p>
+        </div>
+        
+        <!-- Book form -->
+        <form id="edit-book-form" data-book-id="{{ book.id }}">
+            <!-- Basic info - conceptual group -->
+            <div class="form-section">
+                <h3 class="dark-grey mb-3">Basic Information</h3>
+                
+                <div class="form-group">
+                    <label for="title" class="form-label">Title <span class="required-indicator">*</span></label>
+                    <input type="text" class="form-control" id="title" name="title" value="{{ book.title }}" required>
+                    <div class="error-feedback" id="title-error"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="author" class="form-label">Author <span class="required-indicator">*</span></label>
+                    <input type="text" class="form-control" id="author" name="author" value="{{ book.author }}" required>
+                    <div class="error-feedback" id="author-error"></div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="year" class="form-label">Year Published <span class="required-indicator">*</span></label>
+                            <input type="text" class="form-control" id="year" name="year" value="{{ book.year }}" required>
+                            <div class="error-feedback" id="year-error"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="rating" class="form-label">Rating (0-5) <span class="required-indicator">*</span></label>
+                            <input type="text" class="form-control" id="rating" name="rating" value="{{ book.rating }}" required>
+                            <div class="error-feedback" id="rating-error"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content details - conceptual group -->
+            <div class="form-section">
+                <h3 class="dark-grey mb-3">Book Details</h3>
+                
+                <div class="form-group">
+                    <label for="description" class="form-label">Description <span class="required-indicator">*</span></label>
+                    <textarea class="form-control" id="description" name="description" rows="5" required>{{ book.description }}</textarea>
+                    <div class="error-feedback" id="description-error"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="image" class="form-label">Cover Image URL <span class="required-indicator">*</span></label>
+                    <input type="text" class="form-control" id="image" name="image" value="{{ book.image }}" required>
+                    <div class="error-feedback" id="image-error"></div>
+                    <small class="light-grey">Please provide a direct link to the book cover image</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="similar_books" class="form-label">Similar Books (IDs separated by commas)</label>
+                    <input type="text" class="form-control" id="similar_books" name="similar_books" value="{{ book.similar_novel_ids | join(',') }}">
+                    <small class="light-grey">Enter book IDs separated by commas (optional)</small>
+                </div>
+            </div>
+            
+            <div class="action-buttons text-center">
+                <button type="submit" class="btn btn-primary btn-lg me-3">Submit</button>
+                <button type="button" id="discard-button" class="btn btn-outline-secondary btn-lg">Discard Changes</button>
+                <!-- Hidden dialog for confirmation -->
+                <div id="confirm-dialog" title="Discard Changes?" style="display:none;">
+                    <p>Are you sure you want to discard your changes? This cannot be undone.</p>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='edit_book.js') }}"></script>
+</body>
+</html>

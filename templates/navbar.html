@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <i class="bi bi-book me-2"></i>Funny Sci-Fi Books
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/add"><i class="bi bi-plus-circle me-1"></i>Add Book</a>
+                </li>
+            </ul>
+            
+            <form class="d-flex" id="search-form">
+                <input class="form-control me-2" type="search" placeholder="Search titles, authors, descriptions" aria-label="Search" id="search-input">
+                <button class="btn btn-outline-light" type="submit">Search</button>
+            </form>
+            <span class="navbar-text ms-3 d-none d-md-block accent-color">Paul Kearns</span>
+        </div>
+    </div>
+</nav>
+
+<script src="{{ url_for('static', filename='navbar.js') }}"></script>

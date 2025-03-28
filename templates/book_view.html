@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ book.title }} - Funny Sci-Fi Books</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{{ book.image }}" alt="{{ book.title }} Cover" class="book-cover mb-3">
+            </div>
+            <div class="col-md-8">
+                <h1>{{ book.title }}</h1>
+                <p><strong>Author:</strong> {{ book.author }}</p>
+                <p><strong>Year:</strong> {{ book.year }}</p>
+                <p><strong>Rating:</strong> <span class="accent-color">{{ book.rating }}/5 <i class="bi bi-star-fill"></i></span></p>
+                <!-- Updated edit button with accent color -->
+                <div class="mb-3">
+                    <a href="/edit/{{ book.id }}" class="btn btn-sm edit-button" style="background-color: var(--accent-color); color: white;">
+                        <i class="bi bi-pencil"></i> Edit Book
+                    </a>
+                </div>
+                <p>{{ book.description }}</p>
+
+                <h3 class="mt-4 base-color">Similar Books</h3>
+                <div class="row">
+                    {% for similar_book in similar_books %}
+                    <div class="col-md-4">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ similar_book.title }}</h5>
+                                <p class="card-text">By {{ similar_book.author }}</p>
+                                <a href="/view/{{ similar_book.id }}" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
